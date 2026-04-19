@@ -31,7 +31,7 @@ and provides instant credibility scores.
 - Sentiment Analysis
 
 ## 🚀 Live Demo
-[Click Here to View Live Demo](#)
+https://sohamdp10-code.github.io/TruthLens-AI-fake-news-detector/
 
 ## 📸 How to Use
 1. Paste news article text
@@ -47,7 +47,7 @@ and provides instant credibility scores.
 - 🔗 [GitHub](https://github.com/Sohamdp10-Code)
 
 ## 🏆 Built For
-Hackathon Project 2024
+Hackathon Project 2026
 
 ## 📄 License
 MIT License
