@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="TruthLens — AI-powered fake news detector. Analyze any news article for credibility, bias, and misinformation in seconds.">
+    <title>TruthLens — AI Fake News Detector</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" stroke="url(#logoGrad)" stroke-width="2.5" />
+                    <path d="M10 16.5L14 20.5L22 12.5" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32">
+                            <stop stop-color="#00F5D4" />
+                            <stop offset="1" stop-color="#7B61FF" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="brand-name">Truth<span class="brand-accent">Lens</span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active" data-section="home">Home</a>
+            <a href="#analyze" class="nav-link" data-section="analyze">Analyze</a>
+            <a href="#history" class="nav-link" data-section="history">History</a>
+            <a href="#about" class="nav-link" data-section="about">About</a>
+        </div>
+        <div class="nav-actions">
+            <div class="live-indicator">
+                <span class="pulse-dot"></span>
+                <span>AI Online</span>
+            </div>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" class="mobile-link" data-section="home">Home</a>
+        <a href="#analyze" class="mobile-link" data-section="analyze">Analyze</a>
+        <a href="#history" class="mobile-link" data-section="history">History</a>
+        <a href="#about" class="mobile-link" data-section="about">About</a>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="section hero-section active" id="home">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">🛡️</span>
+                    <span>AI-Powered Misinformation Detection</span>
+                </div>
+                <h1 class="hero-title">
+                    Detect <span class="gradient-text">Fake News</span><br>
+                    Before It Spreads
+                </h1>
+                <p class="hero-subtitle">
+                    TruthLens uses advanced AI analysis to evaluate news credibility in real-time.
+                    Identify bias, clickbait, and misinformation with a single click.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" id="heroAnalyzeBtn">
+                        <span>Start Analyzing</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button class="btn btn-ghost" id="heroLearnBtn">
+                        Learn How It Works
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="statArticles">12,847</span>
+                        <span class="stat-label">Articles Analyzed</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">94.7%</span>
+                        <span class="stat-label">Accuracy Rate</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-value">&lt;2s</span>
+                        <span class="stat-label">Analysis Time</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="mini-gauge reliable"></div>
+                    <span>Reuters — Reliable</span>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="mini-gauge suspicious"></div>
+                    <span>Unknown Blog — Suspicious</span>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="mini-gauge fake"></div>
+                    <span>ClickBait Site — Fake</span>
+                </div>
+                <div class="hero-lens-graphic">
+                    <div class="lens-ring ring-1"></div>
+                    <div class="lens-ring ring-2"></div>
+                    <div class="lens-ring ring-3"></div>
+                    <div class="lens-center">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                            <path
+                                d="M21 8C13.82 8 8 13.82 8 21C8 28.18 13.82 34 21 34C24.2 34 27.12 32.86 29.4 30.98L37.72 39.28C38.16 39.72 38.84 39.72 39.28 39.28C39.72 38.84 39.72 38.16 39.28 37.72L30.98 29.4C32.86 27.12 34 24.2 34 21C34 13.82 28.18 8 21 8Z"
+                                fill="url(#searchGrad)" />
+                            <defs>
+                                <linearGradient id="searchGrad" x1="8" y1="8" x2="40" y2="40">
+                                    <stop stop-color="#00F5D4" />
+                                    <stop offset="1" stop-color="#7B61FF" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analyze Section -->
+        <section class="section analyze-section" id="analyze">
+            <div class="section-header">
+                <h2 class="section-title">Analyze <span class="gradient-text">News</span></h2>
+                <p class="section-desc">Paste a news article, URL, or headline to get an instant AI credibility
+                    assessment</p>
+            </div>
+
+            <div class="analyzer-container">
+                <!-- Input Panel -->
+                <div class="input-panel glass-card">
+                    <div class="input-tabs">
+                        <button class="input-tab active" data-tab="text" id="tabText">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path d="M3 3H15M3 7H12M3 11H15M3 15H9" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Article Text
+                        </button>
+                        <button class="input-tab" data-tab="url" id="tabUrl">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                <path
+                                    d="M7.5 10.5C8.32 11.33 9.68 11.33 10.5 10.5L13.5 7.5C14.33 6.68 14.33 5.32 13.5 4.5C12.68 3.67 11.32 3.67 10.5 4.5L9.75 5.25"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                <path
+                                    d="M10.5 7.5C9.68 6.67 8.32 6.67 7.5 7.5L4.5 10.5C3.67 11.32 3.67 12.68 4.5 13.5C5.32 14.33 6.68 14.33 7.5 13.5L8.25 12.75"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            </svg>
+                            URL
+                        </button>
+                    </div>
+
+                    <div class="input-area" id="textInputArea">
+                        <textarea id="articleInput"
+                            placeholder="Paste the full news article text here for analysis...&#10;&#10;For best results, include the headline and full body text."
+                            rows="10"></textarea>
+                    </div>
+                    <div class="input-area hidden" id="urlInputArea">
+                        <div class="url-input-wrapper">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M2 10H18M10 2C12.5 4.5 12.5 15.5 10 18M10 2C7.5 4.5 7.5 15.5 10 18"
+                                    stroke="currentColor" stroke-width="1.5" />
+                            </svg>
+                            <input type="url" id="urlInput" placeholder="https://example.com/news-article">
+                        </div>
+                    </div>
+
+                    <div class="input-actions">
+                        <div class="char-count">
+                            <span id="charCount">0</span> characters
+                        </div>
+                        <button class="btn btn-primary analyze-btn" id="analyzeBtn">
+                            <div class="btn-loader hidden" id="btnLoader">
+                                <div class="spinner"></div>
+                            </div>
+                            <span id="btnText">
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path
+                                        d="M8.5 3.5C5.74 3.5 3.5 5.74 3.5 8.5C3.5 11.26 5.74 13.5 8.5 13.5C9.88 13.5 11.12 12.96 12.04 12.08L15.96 16C16.18 16.22 16.54 16.22 16.76 16C16.98 15.78 16.98 15.42 16.76 15.2L12.84 11.28C13.56 10.38 14 9.24 14 8C14 5.24 11.76 3 9 3"
+                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
+                                Analyze Now
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Sample Articles -->
+                    <div class="sample-articles">
+                        <span class="sample-label">Try a sample:</span>
+                        <button class="sample-btn" data-sample="reliable" id="sampleReliable">Reliable Article</button>
+                        <button class="sample-btn" data-sample="suspicious" id="sampleSuspicious">Suspicious
+                            Article</button>
+                        <button class="sample-btn" data-sample="fake" id="sampleFake">Fake News Example</button>
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="results-panel hidden" id="resultsPanel">
+                    <!-- Overall Score -->
+                    <div class="score-card glass-card">
+                        <div class="score-header">
+                            <h3>Credibility Assessment</h3>
+                            <span class="verdict-badge" id="verdictBadge">—</span>
+                        </div>
+                        <div class="gauge-container">
+                            <div class="gauge" id="mainGauge">
+                                <svg viewBox="0 0 200 120" class="gauge-svg">
+                                    <defs>
+                                        <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                            <stop offset="0%" stop-color="#FF4757" />
+                                            <stop offset="50%" stop-color="#FFA502" />
+                                            <stop offset="100%" stop-color="#2ED573" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="rgba(255,255,255,0.08)"
+                                        stroke-width="12" stroke-linecap="round" />
+                                    <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="url(#gaugeGradient)"
+                                        stroke-width="12" stroke-linecap="round" stroke-dasharray="251.2"
+                                        stroke-dashoffset="251.2" id="gaugeArc" class="gauge-arc" />
+                                </svg>
+                                <div class="gauge-value">
+                                    <span class="gauge-number" id="gaugeNumber">0</span>
+                                    <span class="gauge-label">/ 100</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="score-summary" id="scoreSummary">Submit an article to see the analysis results.</p>
+                    </div>
+
+                    <!-- Detailed Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card glass-card" id="metricClickbait">
+                            <div class="metric-icon clickbait-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M12 9V13M12 17H12.01M4.93 4.93L19.07 19.07M12 3C7.03 3 3 7.03 3 12C3 16.97 7.03 21 12 21C16.97 21 21 16.97 21 12C21 7.03 16.97 3 12 3Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">Clickbait Score</span>
+                                <div class="metric-bar-container">
+                                    <div class="metric-bar" id="clickbaitBar"></div>
+                                </div>
+                                <span class="metric-value" id="clickbaitValue">—</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass-card" id="metricSentiment">
+                            <div class="metric-icon sentiment-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" />
+                                    <path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" />
+                                    <circle cx="9" cy="10" r="1" fill="currentColor" />
+                                    <circle cx="15" cy="10" r="1" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">Emotional Manipulation</span>
+                                <div class="metric-bar-container">
+                                    <div class="metric-bar" id="sentimentBar"></div>
+                                </div>
+                                <span class="metric-value" id="sentimentValue">—</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass-card" id="metricBias">
+                            <div class="metric-icon bias-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 12H21M3 12L7 8M3 12L7 16M21 12L17 8M21 12L17 16" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">Bias Detection</span>
+                                <div class="metric-bar-container">
+                                    <div class="metric-bar" id="biasBar"></div>
+                                </div>
+                                <span class="metric-value" id="biasValue">—</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass-card" id="metricQuality">
+                            <div class="metric-icon quality-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">Writing Quality</span>
+                                <div class="metric-bar-container">
+                                    <div class="metric-bar" id="qualityBar"></div>
+                                </div>
+                                <span class="metric-value" id="qualityValue">—</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass-card" id="metricSource">
+                            <div class="metric-icon source-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22Z"
+                                        stroke="currentColor" stroke-width="2" />
+                                    <path d="M2 12H22M12 2C14.5 4.73 14.5 19.27 12 22M12 2C9.5 4.73 9.5 19.27 12 22"
+                                        stroke="currentColor" stroke-width="2" />
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">Source Credibility</span>
+                                <div class="metric-bar-container">
+                                    <div class="metric-bar" id="sourceBar"></div>
+                                </div>
+                                <span class="metric-value" id="sourceValue">—</span>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass-card" id="metricFact">
+                            <div class="metric-icon fact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M21 12V19C21 20.1 20.1 21 19 21H5C3.9 21 3 20.1 3 19V5C3 3.9 3.9 3 5 3H16"
+                                        stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div class="metric-info">
+                                <span class="metric-label">Factual Indicators</span>
+                                <div class="metric-bar-container">
+                                    <div class="metric-bar" id="factBar"></div>
+                                </div>
+                                <span class="metric-value" id="factValue">—</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Insights -->
+                    <div class="insights-card glass-card">
+                        <h3 class="insights-title">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                <path
+                                    d="M11 1V3M11 19V21M1 11H3M19 11H21M3.93 3.93L5.34 5.34M16.66 16.66L18.07 18.07M3.93 18.07L5.34 16.66M16.66 5.34L18.07 3.93"
+                                    stroke="url(#insightGrad)" stroke-width="2" stroke-linecap="round" />
+                                <circle cx="11" cy="11" r="4" stroke="url(#insightGrad)" stroke-width="2" />
+                                <defs>
+                                    <linearGradient id="insightGrad" x1="1" y1="1" x2="21" y2="21">
+                                        <stop stop-color="#00F5D4" />
+                                        <stop offset="1" stop-color="#7B61FF" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            AI Insights
+                        </h3>
+                        <div class="insights-list" id="insightsList">
+                            <p class="insight-placeholder">Analysis insights will appear here...</p>
+                        </div>
+                    </div>
+
+                    <!-- Red Flags -->
+                    <div class="flags-card glass-card" id="flagsCard">
+                        <h3 class="flags-title">
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                <path d="M4 2V20M4 4H14.5L12 7.5L14.5 11H4" stroke="#FF4757" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            Red Flags Detected
+                        </h3>
+                        <div class="flags-list" id="flagsList"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section class="section history-section" id="history">
+            <div class="section-header">
+                <h2 class="section-title">Analysis <span class="gradient-text">History</span></h2>
+                <p class="section-desc">Review your previously analyzed articles</p>
+            </div>
+            <div class="history-actions">
+                <button class="btn btn-ghost btn-sm" id="clearHistoryBtn">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path
+                            d="M2 4H14M5 4V3C5 2.45 5.45 2 6 2H10C10.55 2 11 2.45 11 3V4M12 4V13C12 13.55 11.55 14 11 14H5C4.45 14 4 13.55 4 13V4"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                    Clear All
+                </button>
+            </div>
+            <div class="history-list" id="historyList">
+                <div class="empty-state">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <circle cx="32" cy="32" r="28" stroke="rgba(255,255,255,0.1)" stroke-width="2" />
+                        <path d="M24 32H40M32 24V40" stroke="rgba(255,255,255,0.2)" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                    <p>No analyses yet. Start by analyzing an article!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section about-section" id="about">
+            <div class="section-header">
+                <h2 class="section-title">How <span class="gradient-text">TruthLens</span> Works</h2>
+                <p class="section-desc">Our multi-layered AI approach to detecting misinformation</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card glass-card">
+                    <div class="about-step">01</div>
+                    <div class="about-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M5 8H35M5 16H28M5 24H35M5 32H20" stroke="url(#ab1)" stroke-width="2.5"
+                                stroke-linecap="round" />
+                            <defs>
+                                <linearGradient id="ab1" x1="5" y1="8" x2="35" y2="32">
+                                    <stop stop-color="#00F5D4" />
+                                    <stop offset="1" stop-color="#7B61FF" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Text Parsing</h3>
+                    <p>Advanced NLP breaks down the article into linguistic components — sentences, entities, claims,
+                        and citations.</p>
+                </div>
+
+                <div class="about-card glass-card">
+                    <div class="about-step">02</div>
+                    <div class="about-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="15" stroke="url(#ab2)" stroke-width="2.5" />
+                            <path d="M20 10V20L27 27" stroke="url(#ab2)" stroke-width="2.5" stroke-linecap="round" />
+                            <defs>
+                                <linearGradient id="ab2" x1="5" y1="5" x2="35" y2="35">
+                                    <stop stop-color="#00F5D4" />
+                                    <stop offset="1" stop-color="#7B61FF" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Pattern Analysis</h3>
+                    <p>Machine learning models detect common misinformation patterns — clickbait, emotional
+                        manipulation, and logical fallacies.</p>
+                </div>
+
+                <div class="about-card glass-card">
+                    <div class="about-step">03</div>
+                    <div class="about-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path d="M10 30L15 20L22 25L30 10" stroke="url(#ab3)" stroke-width="2.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="15" cy="20" r="2" fill="#00F5D4" />
+                            <circle cx="22" cy="25" r="2" fill="#7B61FF" />
+                            <circle cx="30" cy="10" r="2" fill="#00F5D4" />
+                            <defs>
+                                <linearGradient id="ab3" x1="10" y1="10" x2="30" y2="30">
+                                    <stop stop-color="#00F5D4" />
+                                    <stop offset="1" stop-color="#7B61FF" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Credibility Scoring</h3>
+                    <p>Multiple analysis dimensions combine into a single credibility score with detailed breakdowns and
+                        actionable insights.</p>
+                </div>
+
+                <div class="about-card glass-card">
+                    <div class="about-step">04</div>
+                    <div class="about-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <path
+                                d="M20 5L24.09 13.26L33 14.27L26.5 20.52L28.18 29.43L20 25.02L11.82 29.43L13.5 20.52L7 14.27L15.91 13.26L20 5Z"
+                                stroke="url(#ab4)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <defs>
+                                <linearGradient id="ab4" x1="7" y1="5" x2="33" y2="29">
+                                    <stop stop-color="#00F5D4" />
+                                    <stop offset="1" stop-color="#7B61FF" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h3>Verdict & Report</h3>
+                    <p>Get a clear verdict with red flags, AI insights, and recommendations to help you make informed
+                        decisions about what you read.</p>
+                </div>
+            </div>
+
+            <div class="tech-stack glass-card">
+                <h3>🧠 Analysis Dimensions</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag">Clickbait Detection</span>
+                    <span class="tech-tag">Sentiment Analysis</span>
+                    <span class="tech-tag">Bias Detection</span>
+                    <span class="tech-tag">Source Verification</span>
+                    <span class="tech-tag">Writing Quality</span>
+                    <span class="tech-tag">Fact Indicators</span>
+                    <span class="tech-tag">Logical Consistency</span>
+                    <span class="tech-tag">Citation Analysis</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="brand-name">Truth<span class="brand-accent">Lens</span></span>
+                <p>AI-powered fake news detection for a better-informed world.</p>
+            </div>
+            <div class="footer-links">
+                <span>Built for Hackathon 2026</span>
+                <span class="footer-dot">•</span>
+                <span>Powered by AI</span>
+                <span class="footer-dot">•</span>
+                <span>Made with 💜</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="analyzer.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
