@@ -49,5 +49,3 @@ https://sohamdp10-code.github.io/TruthLens-AI-fake-news-detector/
 ## 🏆 Built For
 Hackathon Project 2026
 
-## 📄 License
-MIT License
